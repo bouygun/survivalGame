@@ -1,8 +1,8 @@
-import { survivalServisInput } from "../models/models";
+import { SurvivalServisInput } from "../models/models";
 import { ErrorHandler } from "../utils/errorHandler";
 
 export class SurvivalSimulation {
-  public simulate(parameters: survivalServisInput): string[] {
+  public simulate(parameters: SurvivalServisInput): string[] {
     const { resourceDistance, hero, enemies } = parameters;
     const responseArr: string[] = [];
     try {
