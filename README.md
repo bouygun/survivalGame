@@ -12,6 +12,7 @@ Write a simulation that find outs if the hero would survive or not. You can use 
 
 ## Folder Structure
 
+```bash
 survivalGame/
 ├── src/ #Source files
 │   ├── models/
@@ -29,7 +30,7 @@ survivalGame/
 ├── tsconfig.json
 ├── package.json
 ├── README.md
-
+```
 
 ## Installation
 
