@@ -1,15 +1,10 @@
-import { Hero } from '../models/hero';
-import { Enemy } from '../models/enemy';
+import { survivalServisInput } from '../models/models';
 import { ErrorHandler } from '../utils/errorHandler';
 
-interface PositionedEnemy {
-    enemy: Enemy;
-    position: number;
-}
-
 export class SimulationService {
-    public simulate(hero: Hero, enemies: PositionedEnemy[], resourceDistance: number): string[] {
-        const log: string[] = [];
+    public simulate(parameters: survivalServisInput): string[] {
+        const {resourceDistance, hero, enemies} = parameters
+        const responseArr: string[] = [];
         try {
             if(resourceDistance <= 0){
                 throw new ErrorHandler(400, "Resource distance must be greater than zero.")
@@ -22,9 +17,9 @@ export class SimulationService {
                     throw new ErrorHandler(400, "Enemy's hp and attack must be greater than zero.");
                 }
             });
-        log.push(`Hero started journey with ${hero.hp} HP!`);
+            responseArr.push(`Hero started journey with ${hero.hp} HP!`);
         
-        enemies.sort((a, b) => a.position - b.position); // Düşmanları konuma göre sırala
+        enemies.sort((a, b) => a.position - b.position)
 
         for (const enemyPosition of enemies) {
             if (enemyPosition.position > resourceDistance) break;
@@ -36,16 +31,16 @@ export class SimulationService {
                 enemy.hp -= hero.attack;
             }
             if (hero.hp > 0) {
-                log.push(`Hero defeated ${enemy.type} with ${hero.hp} HP remaining`);
+                responseArr.push(`Hero defeated ${enemyPosition.type} with ${hero.hp} HP remaining`);
             } else {
-                log.push(`Hero was defeated by ${enemy.type} at position ${position}`);
-                log.push(`Hero is Dead!! Last seen at position ${position}!!`);
-                return log;
+                responseArr.push(`Hero was defeated by ${enemyPosition.type} at position ${position}`);
+                responseArr.push(`Hero is Dead!! Last seen at position ${position}!!`);
+                return responseArr;
             }
         }
 
         if (hero.hp > 0) {
-            log.push(`Hero Survived!`);
+            responseArr.push(`Hero Survived!`);
         }
 
         } catch (error) {
@@ -55,6 +50,6 @@ export class SimulationService {
                 throw new ErrorHandler(500, "An error occurred during the simulation.");
             }
         }
-        return log
+        return responseArr
     }
 }

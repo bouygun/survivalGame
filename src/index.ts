@@ -1,5 +1,5 @@
 import express from 'express';
-import simulationRoutes from './routes/gameRoutes';
+import simulationRoutes from './routes/survivalRoutes';
 import dotenv from 'dotenv'
 
 dotenv.config()
