@@ -8,12 +8,12 @@ test.serial("If hero survives", async (t) => {
 
   const hero: Hero = { hp: 1000, attack: 10 };
   const enemies: Enemy[] = [
-    { enemy: { hp: 50, attack: 2 }, position: 276, type: "Bug" },
-    { enemy: { hp: 50, attack: 2 }, position: 489, type: "Bug" },
-    { enemy: { hp: 100, attack: 15 }, position: 1527, type: "Lion" },
-    { enemy: { hp: 300, attack: 7 }, position: 1681, type: "Zombie" },
-    { enemy: { hp: 100, attack: 15 }, position: 2865, type: "Lion" },
-    { enemy: { hp: 300, attack: 7 }, position: 3523, type: "Zombie" },
+    {  hp: 50, attack: 2 , position: 276, type: "Bug" },
+    { hp: 50, attack: 2 , position: 489, type: "Bug" },
+    { hp: 100, attack: 15 , position: 1527, type: "Lion" },
+    { hp: 300, attack: 7 , position: 1681, type: "Zombie" },
+    { hp: 100, attack: 15 , position: 2865, type: "Lion" },
+    { hp: 300, attack: 7 , position: 3523, type: "Zombie" },
   ];
   const resourceDistance = 5000;
 
@@ -43,11 +43,11 @@ test.serial("If hero lost and dies", async (t) => {
 
   const hero: Hero = { hp: 500, attack: 9 };
   const enemies: Enemy[] = [
-    { enemy: { hp: 400, attack: 8 }, position: 274, type: "Mutant" },
-    { enemy: { hp: 75, attack: 10 }, position: 486, type: "ZombieDog" },
-    { enemy: { hp: 75, attack: 10 }, position: 1897, type: "ZombieDog" },
-    { enemy: { hp: 300, attack: 7 }, position: 1687, type: "Zombie" },
-    { enemy: { hp: 400, attack: 8 }, position: 5332, type: "Mutant" },
+    { hp: 400, attack: 8 , position: 274, type: "Mutant" },
+    { hp: 75, attack: 10 , position: 486, type: "ZombieDog" },
+    { hp: 75, attack: 10 , position: 1897, type: "ZombieDog" },
+    { hp: 300, attack: 7 , position: 1687, type: "Zombie" },
+    { hp: 400, attack: 8 , position: 5332, type: "Mutant" },
   ];
   const resourceDistance = 7500;
 
@@ -75,7 +75,7 @@ test.serial("Invalid resourceDistance in request", async (t) => {
 
   const hero: Hero = { hp: 1000, attack: 10 };
   const enemies: Enemy[] = [
-    { enemy: { hp: 50, attack: 2 }, position: 276, type: "Bug" },
+    { hp: 50, attack: 2 , position: 276, type: "Bug" },
   ];
   const resourceDistance = 0;
 
@@ -94,7 +94,7 @@ test.serial("Invalid hero stats", async (t) => {
 
   const hero: Hero = { hp: 0, attack: 10 };
   const enemies: Enemy[] = [
-    { enemy: { hp: 50, attack: 2 }, position: 276, type: "Bug" },
+    { hp: 50, attack: 2 , position: 276, type: "Bug" },
   ];
   const resourceDistance = 5000;
 
@@ -113,7 +113,7 @@ test.serial("Invalid enemy stats", async (t) => {
 
   const hero: Hero = { hp: 1000, attack: 10 };
   const enemies: Enemy[] = [
-    { enemy: { hp: 0, attack: 2 }, position: 276, type: "Bug" },
+    { hp: 0, attack: 2 , position: 276, type: "Bug" },
   ];
   const resourceDistance = 5000;
 
