@@ -35,11 +35,9 @@ export class SurvivalSimulation {
         if (enemy.position > resourceDistance) break;
 
         lastPosition = enemy.position;
-        const { hp, attack, position } = enemy;
-        let enemyHp = enemy.hp;
+        const {  attack, position } = enemy;
 
         while (hero.hp > 0 && enemy.hp > 0) {
-          // eşitliği bi dene
           hero.hp -= attack;
           enemy.hp -= hero.attack;
         }

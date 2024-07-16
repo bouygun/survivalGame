@@ -7,15 +7,12 @@ const simulationService = new SurvivalSimulation();
 
 export const simulateSurvival = (req: Request, res: Response) => {
   try {
-    console.log('req.body.inputText', req.body.inputText)
+
     const inputText: string = req.body.inputText
-    console.log('req.body.inputText')
-    console.log('req.body.inputText', req.body.inputText)
-    const { hero, enemies, resourceDistance } =
-      simulateSurvivalParseInput(inputText)
-console.log('hero', hero)
-console.log('enemies', enemies)
-console.log('resourceDistance', resourceDistance)
+
+    const { hero, enemies, resourceDistance } = simulateSurvivalParseInput(inputText)
+  
+    
     const result = simulationService.simulate({
       hero,
       enemies,
