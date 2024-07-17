@@ -25,8 +25,12 @@ survivalGame/
 │   ├── services/
 │   │   ├── simulationService.ts #Prepare response. Includes desired logic
 │   ├── index.ts #start and listen the project
-├── tests/
-│   ├──survivalService.ava.ts #Test files
+├── tests/  #Test files
+│   ├──survivalService.test.ts  #service tests
+│   ├──survivalController.test.ts #controller tests
+├── utils/  #Helpers
+│   ├──errorHandler.ts  #for error msg and statusCode handler
+│   ├──parse.ts #for input parser
 ├── tsconfig.json
 ├── package.json
 ├── README.md
@@ -56,6 +60,12 @@ Start the server
 
 ```bash
   npm run dev
+```
+
+or
+
+```bash
+  npx ts-node src/index.ts
 ```
 
 
