@@ -1,10 +1,10 @@
-import { ResultType, SurvivalServisInput } from "../models/models";
 import { Hero, Enemy } from "../models/types";
 import { ErrorHandler } from "./errorHandler";
 
 export const simulateSurvivalParseInput = (
   inputText: string
-): ResultType<SurvivalServisInput, any> => {
+) => {
+  // regex formatla - control et hata. pattern belirleyip tüm dizeleri gezebilirsin. uymayan için hatawarning 
   let errorMsg: string | undefined;
   try {
     const lines = inputText
@@ -69,14 +69,8 @@ export const simulateSurvivalParseInput = (
       throw new ErrorHandler(400, errorMsg);
     }
 
-    return {
-      success: true,
-      data: { hero, enemies, resourceDistance },
-    }
+    return { hero, enemies, resourceDistance }
   } catch (error) {
-    return {
-      success: false,
-      error: new ErrorHandler(500, errorMsg || "System Error"),
-    }
+ throw new ErrorHandler(500, errorMsg || "System Error")
   }
 };
