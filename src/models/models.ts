@@ -1,20 +1,19 @@
-import { Enemy, Hero } from "./types"
+import { Enemy, Hero } from "./types";
 
 export type SurvivalServisInput = {
-    hero: Hero,
-    enemies: Enemy[],
-    resourceDistance: number
-}
+  hero: Hero;
+  enemies: Enemy[];
+  resourceDistance: number;
+};
 
-// after use for util funcitons
+// Result Type for functions general return
 type ResultSuccessType<T> = {
-    success: true
-    data: T
-  }
-  
-  type ResultErrorType<U> = {
-    success: false
-    error: U
-  }
-  
-  export type ResultType<T, U> = ResultSuccessType<T> | ResultErrorType<U>
+  success: true;
+  data: T;
+};
+
+type ResultErrorType<U> = {
+  success: false;
+  error: U;
+};
+export type ResultType<T, U> = ResultSuccessType<T> | ResultErrorType<U>;

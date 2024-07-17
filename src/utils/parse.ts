@@ -1,7 +1,10 @@
-import { Hero, Enemy } from "../models/types";
+import { ResultType, SurvivalServisInput } from "../models/models";
+import { Hero, Enemy, Skills } from "../models/types";
 import { ErrorHandler } from "./errorHandler";
 
-export const simulateSurvivalParseInput = (inputText: string) => {
+export const simulateSurvivalParseInput = (
+  inputText: string
+): ResultType<SurvivalServisInput, any> => {
   let errorMsg: string | undefined;
   try {
     const lines = inputText
@@ -44,7 +47,7 @@ export const simulateSurvivalParseInput = (inputText: string) => {
       }
     }
 
-    // Parse enemies position
+    // Parse enemies positions
     for (let i = 3; i < lines.length; i++) {
       const match = lines[i].match(/There is a (\w+) at position (\d+)/);
       if (match) {
@@ -62,14 +65,17 @@ export const simulateSurvivalParseInput = (inputText: string) => {
     }
     if (enemies.length <= 0 || !resourceDistance || !hero) {
       errorMsg = "Invalid input format.";
-      throw new ErrorHandler(400, errorMsg);
+      throw new ErrorHandler(errorMsg);
     }
 
-    return { hero, enemies, resourceDistance };
-  } catch (error) {
-    if (errorMsg) {
-      throw new ErrorHandler(400, errorMsg);
+    return {
+      success: true,
+      data: { hero, enemies, resourceDistance },
     }
-    throw new ErrorHandler(500, "System Error");
+  } catch (error) {
+    return {
+      success: false,
+      error: new ErrorHandler(errorMsg || "System Error"),
+    }
   }
 };

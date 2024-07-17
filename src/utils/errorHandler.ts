@@ -1,19 +1,19 @@
+// fix err types, bağımlılığı azalt kendi içinde rol alsın
 export class ErrorHandler extends Error {
-    statusCode: number;
+    statusCode?: number;
     message: string;
 
-    constructor(statusCode: number, message: string) {
+    constructor(message: string, statusCode?: number,) {
         super();
         this.statusCode = statusCode;
         this.message = message;
     }
 
     static handleError(err: ErrorHandler, res: any) {
-        const { statusCode, message } = err;
-        res.status(statusCode || 500).json({
+        res.status(err.statusCode || 500).json({
             status: "error",
-            statusCode,
-            message
+            statusCode: err.statusCode || 500,
+            message: err.message || 'System Error'
         });
     }
 }

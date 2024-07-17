@@ -7,12 +7,14 @@ const simulationService = new SurvivalSimulation();
 
 export const simulateSurvival = (req: Request, res: Response) => {
   try {
+    const inputText: string = req.body.inputText;
 
-    const inputText: string = req.body.inputText
+    const parseResponse = simulateSurvivalParseInput(inputText);
+    if (!parseResponse.success) {
+      throw parseResponse.error;
+    }
+    const { hero, enemies, resourceDistance } = parseResponse.data;
 
-    const { hero, enemies, resourceDistance } = simulateSurvivalParseInput(inputText)
-  
-    
     const result = simulationService.simulate({
       hero,
       enemies,
@@ -21,6 +23,6 @@ export const simulateSurvival = (req: Request, res: Response) => {
 
     res.json({ result });
   } catch (error) {
-    ErrorHandler.handleError(error as ErrorHandler, res)
+    ErrorHandler.handleError(error as ErrorHandler, res);
   }
-}
+};
