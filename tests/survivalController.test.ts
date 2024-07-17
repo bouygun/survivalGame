@@ -14,9 +14,7 @@ test.serial("Invalid input format", async (t) => {
         Hero attack is 10
     `;
 
-  const res = await request(app)
-    .post("/simulate")
-    .send({ inputText })
+  const res = await request(app).post("/simulate").send({ inputText });
 
   t.is(res.body.message, "Invalid input format.");
   t.is(res.body.statusCode, 400);
@@ -57,7 +55,7 @@ test.serial("Hero survives", async (t) => {
 
   const res = await request(app).post("/simulate").send({ inputText });
 
-   t.deepEqual(res.body.result, expectedOutput);
+  t.deepEqual(res.body.result, expectedOutput);
 });
 
 test.serial("Hero died", async (t) => {

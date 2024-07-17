@@ -1,10 +1,8 @@
 import { Hero, Enemy } from "../models/types";
 import { ErrorHandler } from "./errorHandler";
 
-export const simulateSurvivalParseInput = (
-  inputText: string
-) => {
-  // regex formatla - control et hata. pattern belirleyip tüm dizeleri gezebilirsin. uymayan için hatawarning 
+export const simulateSurvivalParseInput = (inputText: string) => {
+  // regex formatla - control et hata. pattern belirleyip tüm dizeleri gezebilirsin
   let errorMsg: string | undefined;
   try {
     const lines = inputText
@@ -31,7 +29,6 @@ export const simulateSurvivalParseInput = (
           hp: 0,
         };
       } else {
-        // else-throw ??
         const enemyTypeKeys = Object.keys(enemyTypes);
         for (const enemyType of enemyTypeKeys) {
           if (lines[i].startsWith(enemyType) && lines[i].includes("hp")) {
@@ -69,8 +66,8 @@ export const simulateSurvivalParseInput = (
       throw new ErrorHandler(400, errorMsg);
     }
 
-    return { hero, enemies, resourceDistance }
+    return { hero, enemies, resourceDistance };
   } catch (error) {
- throw new ErrorHandler(500, errorMsg || "System Error")
+    throw new ErrorHandler(500, errorMsg || "System Error");
   }
 };

@@ -9,8 +9,9 @@ export const simulateSurvival = (req: Request, res: Response) => {
   try {
     const inputText: string = req.body.inputText;
 
-    const { hero, enemies, resourceDistance }= simulateSurvivalParseInput(inputText);
-  
+    const { hero, enemies, resourceDistance } =
+      simulateSurvivalParseInput(inputText);
+
     const result = simulationService.simulate({
       hero,
       enemies,
