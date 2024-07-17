@@ -1,5 +1,5 @@
 import { ResultType, SurvivalServisInput } from "../models/models";
-import { Hero, Enemy, Skills } from "../models/types";
+import { Hero, Enemy } from "../models/types";
 import { ErrorHandler } from "./errorHandler";
 
 export const simulateSurvivalParseInput = (
@@ -31,6 +31,7 @@ export const simulateSurvivalParseInput = (
           hp: 0,
         };
       } else {
+        // else-throw ??
         const enemyTypeKeys = Object.keys(enemyTypes);
         for (const enemyType of enemyTypeKeys) {
           if (lines[i].startsWith(enemyType) && lines[i].includes("hp")) {
@@ -65,7 +66,7 @@ export const simulateSurvivalParseInput = (
     }
     if (enemies.length <= 0 || !resourceDistance || !hero) {
       errorMsg = "Invalid input format.";
-      throw new ErrorHandler(errorMsg);
+      throw new ErrorHandler(400, errorMsg);
     }
 
     return {
@@ -75,7 +76,7 @@ export const simulateSurvivalParseInput = (
   } catch (error) {
     return {
       success: false,
-      error: new ErrorHandler(errorMsg || "System Error"),
+      error: new ErrorHandler(500, errorMsg || "System Error"),
     }
   }
 };

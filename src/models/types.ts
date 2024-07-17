@@ -1,14 +1,13 @@
 // you can use zod schemas packgace for generic types
 
-export type Skills = {
+export type BaseSkills = {
     hp: number,
     attack: number
 }
 
-export type Hero = Skills
+export type Hero = BaseSkills
 
-// hero type ayır
-export type Enemy = Skills &{
+export type Enemy = BaseSkills & {
     position: number
     type: string
 }

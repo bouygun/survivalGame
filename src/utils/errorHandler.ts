@@ -1,9 +1,9 @@
 // fix err types, bağımlılığı azalt kendi içinde rol alsın
 export class ErrorHandler extends Error {
-    statusCode?: number;
+    statusCode: number;
     message: string;
 
-    constructor(message: string, statusCode?: number,) {
+    constructor(statusCode: number,message: string,) {
         super();
         this.statusCode = statusCode;
         this.message = message;
