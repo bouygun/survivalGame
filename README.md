@@ -94,100 +94,19 @@ To run this project, you will need to add the following environment variables to
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `resourceDistance`      | `number` | **Required**. distance of the hero from start point |
-| `hero`      | `object` | **Required**. hero's skills|
-| `enemies`      | `object` | **Required**. enemy's skills |
+| `inputText`      | `string` | **Required**. all requirements |
 
 
 You can use this request, If you want to hero wins
 ```
 {
-    "resourceDistance": 5000,
-    "hero": {
-        "hp": 1000,
-        "attack": 10
-    },
-    "enemies": [
-        {
-            "type": "Bug",
-            "hp": 50,
-            "attack": 2,
-            "position": 276
-        },
-        {
-            "type": "Bug",
-            "hp": 50,
-            "attack": 2,
-            "position": 489
-        },
-        {
-            "type": "Lion",
-            "hp": 100,
-            "attack": 15,
-            "position": 1527
-        },
-        {
-            "type": "Zombie",
-            "hp": 300,
-            "attack": 7,
-            "position": 1681
-        },
-        {
-            "type": "Lion",
-            "hp": 100,
-            "attack": 15,
-            "position": 2865
-        },
-        {
-            "type": "Zombie",
-            "hp": 300,
-            "attack": 7,
-            "position": 3523
-        }
-    ]
+  "inputText": "Resources are 5000 meters away\nHero has 1000 hp\nHero attack is 10\nBug is Enemy\nLion is Enemy\nZombie is Enemy\nBug has 50 hp\nBug attack is 2\nLion has 100 hp\nLion attack is 15\nZombie has 300 hp\nZombie attack is 7\nThere is a Zombie at position 1681\nThere is a Bug at position 276\nThere is a Bug at position 489\nThere is a Lion at position 1527\nThere is a Lion at position 2865\nThere is a Zombie at position 3523"
 }
-
 ```
 
 You can use this request, If you want to enemies win
 ```
 {
-    "resourceDistance": 7500,
-    "hero": {
-        "hp": 500,
-        "attack": 9
-    },
-    "enemies": [
-        {
-            "type": "Mutant",
-            "hp": 400,
-            "attack": 8,
-            "position": 274
-        },
-        {
-            "type": "ZombieDog",
-            "hp": 75,
-            "attack": 10,
-            "position": 486
-        },
-        {
-            "type": "Zombie",
-            "hp": 300,
-            "attack": 7,
-            "position": 1687
-        },
-        {
-            "type": "Mutant",
-            "hp": 400,
-            "attack": 8,
-            "position": 1897
-        },
-        {
-            "type": "ZombieDog",
-            "hp": 75,
-            "attack": 10,
-            "position": 5332
-        }
-    ]
+  "inputText": "Resources are 7500 meters away\nHero has 500 hp\nHero attack is 9\nZombieDog is Enemy\nMutant is Enemy\nZombie is Enemy\nMutant has 400 hp\nMutant attack is 8\nZombieDog has 75 hp\nZombieDog attack is 10\nZombie has 300 hp\nZombie attack is 7\nThere is a Zombie at position 1687\nThere is a Mutant at position 274\nThere is a ZombieDog at position 486\nThere is a ZombieDog at position 1897\nThere is a Mutant at position 5332"
 }
 ```
